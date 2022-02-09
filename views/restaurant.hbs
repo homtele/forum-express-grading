@@ -1,7 +1,11 @@
 <div class="row mb-5">
   <div class="col-md-12">
     <h1>{{restaurant.name}}</h1>
-    <p>[{{restaurant.Category.name}}]</p>
+    <p>
+      <a class="text-secondary text-decoration-none" href="/restaurants?categoryId={{restaurant.Category.id}}">
+        [{{restaurant.Category.name}}]
+      </a>
+    </p>
   </div>
   <div class="col-md-4">
     <img class="img-responsive center-block mb-5" src="{{restaurant.image}}" style="width: 250px; transition: opacity 0.5s; opacity:0;" onload="this.style.opacity=1;">

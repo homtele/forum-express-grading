@@ -24,7 +24,9 @@
               {{this.name}}
             </a>
           </p>
-          <span class="badge bg-secondary">{{this.Category.name}}</span>
+          <a class="badge bg-secondary text-light text-decoration-none" href="/restaurants?categoryId={{restaurant.Category.id}}">
+            {{this.Category.name}}
+          </a>
           <p class="card-text text-truncate">{{this.description}}</p>
           <div class="d-flex">
             {{#if this.isFavorited}}
