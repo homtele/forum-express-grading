@@ -63,6 +63,7 @@ const restaurantController = {
     return Restaurant
       .findByPk(req.params.id, {
         nest: true,
+        order: [[Comment, 'createdAt', 'DESC']],
         include: [
           Category,
           { model: Comment, include: User },

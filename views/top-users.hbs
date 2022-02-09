@@ -1,12 +1,12 @@
 {{> restaurant-tabs route='topUsers'}}
 <h1>美食達人</h1>
-<hr />
+<hr>
 <div class="row" style="text-align: center;">
 {{#each users}}
   <div class="col-3">
     <a href="/users/{{this.id}}">
     {{#if this.image}}
-      <img src="{{this.image}}" width="140px" height="140px" style="transition: opacity 0.5s; opacity:0;" onload="this.style.opacity=1;" />
+      <img src="{{this.image}}" width="140px" height="140px" style="transition: opacity 0.5s; opacity:0;" onload="this.style.opacity=1;">
     {{else}}
       <img src="https://via.placeholder.com/140" width="140px" height="140px">
     {{/if}}

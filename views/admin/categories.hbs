@@ -1,7 +1,7 @@
 <h1>餐廳後台</h1>
 {{> admin-tabs route="categories"}}
 {{#if category}}
-<br />
+<br>
 <div class="d-flex align-items-center text-white-50 bg-purple">
   <form class="row" action="/admin/categories/{{category.id}}?_method=PUT" method="POST">
     <div class="col-auto">
@@ -9,12 +9,13 @@
     </div>
     <div class="col-auto">
       <button class="btn btn-warning" type="submit">Update</button>
+      <a class="btn btn-link link-secondary" href="/admin/categories">or Create New</a>
     </div>
   </form>
 </div>
-<br />
+<br>
 {{else}}
-<br />
+<br>
 <div class="d-flex align-items-center text-white-50 bg-purple">
   <form class="row" action="/admin/categories" method="POST">
     <div class="col-auto">
@@ -25,9 +26,9 @@
     </div>
   </form>
 </div>
-<br />
+<br>
 {{/if}}
-<br />
+<br>
 <table class="table align-middle">
   <thead class="thead-dark">
     <tr>
