@@ -71,7 +71,10 @@ const restaurantController = {
           { model: User, as: 'LikedUsers' }
         ]
       })
-      .then(restaurant => restaurant.increment('viewCounts'))
+      .then(restaurant => {
+        if (!restaurant) throw new Error("Restaurant didn't exist")
+        return restaurant.increment('viewCounts')
+      })
       .then(restaurant => {
         const isFavorited = restaurant.FavoritedUsers.some(f => f.id === req.user.id)
         const isLiked = restaurant.LikedUsers.some(l => l.id === req.user.id)
@@ -96,7 +99,10 @@ const restaurantController = {
           }
         ]
       })
-      .then(restaurant => res.render('dashboard', { restaurant: restaurant.toJSON() }))
+      .then(restaurant => {
+        if (!restaurant) throw new Error("Restaurant didn't exist")
+        return res.render('dashboard', { restaurant: restaurant.toJSON() })
+      })
       .catch(err => next(err))
   },
   getTopRestaurants: (req, res, next) => {
