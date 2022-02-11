@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-12">
     <h1>{{restaurant.name}}</h1>
-    <p>[{{restaurant.Category.name}}]</p>
+    <p>[{{restaurant.categoryName}}]</p>
   </div>
   <hr>
   <ul>
     <li>瀏覽次數：{{restaurant.viewCounts}}</li>
-    <li>評論數：{{restaurant.Comments.length}}</li>
-    <li>收藏數：{{restaurant.FavoritedUsers.length}}</li>
+    <li>評論數：{{commentsCount}}</li>
+    <li>收藏數：{{favoritedUsersCount}}</li>
   </ul>
 </div>
 <a class="btn btn-outline-secondary" href="javascript:history.back()">Back</a>

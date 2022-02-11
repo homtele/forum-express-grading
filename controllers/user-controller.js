@@ -28,7 +28,7 @@ const userController = {
       .then(user => {
         if (!user) throw new Error("User didn't exist!")
         let lastComments = {}
-        user.Comments.forEach(comment => { lastComments[comment.Restaurant.id] = comment.toJSON() })
+        user.Comments.forEach(comment => { lastComments[comment.restaurantId] = comment.toJSON() })
         lastComments = Object.values(lastComments)
         user = {
           ...user.toJSON(),
