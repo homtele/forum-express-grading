@@ -1,5 +1,5 @@
-const { User, Restaurant, Category, Comment, Favorite, Sequelize } = require('../models')
-const { getOffset, getPagination } = require('../helpers/pagination-helper')
+const { User, Restaurant, Category, Comment, Favorite, Sequelize } = require('../../models')
+const { getOffset, getPagination } = require('../../helpers/pagination-helper')
 const restaurantController = {
   getRestaurants: (req, res, next) => {
     const DEFAULT_LIMIT = 9
