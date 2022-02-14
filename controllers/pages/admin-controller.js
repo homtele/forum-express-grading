@@ -1,6 +1,6 @@
+const adminServices = require('../../services/admin-services')
 const { User, Restaurant, Category } = require('../../models')
 const { imgurFileHandler } = require('../../helpers/file-helpers')
-const adminServices = require('../../services/admin-services')
 
 const adminController = {
   getUsers: (req, res, next) => {
@@ -35,24 +35,11 @@ const adminController = {
       .catch(err => next(err))
   },
   postRestaurant: (req, res, next) => {
-    const { name, categoryId, tel, address, openingHours, description } = req.body
-    const { file } = req
-    if (!name) throw new Error('Restaurant name is required!')
-    imgurFileHandler(file)
-      .then(filePath => Restaurant.create({
-        name,
-        tel,
-        address,
-        openingHours,
-        description,
-        image: filePath || null,
-        categoryId
-      }))
-      .then(() => {
-        req.flash('success_messages', 'restaurant was successfully created')
-        res.redirect('/admin/restaurants')
-      })
-      .catch(err => next(err))
+    adminServices.postRestaurant(req, (err, data) => {
+      if (err) return next(err)
+      req.flash('success_messages', 'restaurant was successfully created')
+      res.redirect('/admin/restaurants')
+    })
   },
   getRestaurant: (req, res, next) => {
     return Restaurant

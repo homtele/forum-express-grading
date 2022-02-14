@@ -27,7 +27,7 @@ const restaurantServices = {
         if (!pagination.pages.includes(page)) throw new Error("Page didn't exist!")
         restaurants = restaurants.rows.map(r => ({
           ...r,
-          description: r.description.substring(0, 50),
+          description: r.description?.substring(0, 50),
           isFavorited: req.user && FavoritedRestaurantsId.includes(r.id),
           isLiked: req.user && LikedRestaurantsId.includes(r.id)
         }))

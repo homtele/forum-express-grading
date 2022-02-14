@@ -1,4 +1,5 @@
 const { Restaurant, Category } = require('../models')
+const { imgurFileHandler } = require('../helpers/file-helpers')
 const { getOffset, getPagination } = require('../helpers/pagination-helper')
 
 const adminServices = {
@@ -22,6 +23,23 @@ const adminServices = {
           pagination
         })
       })
+      .catch(err => cb(err))
+  },
+  postRestaurant: (req, cb) => {
+    const { name, categoryId, tel, address, openingHours, description } = req.body
+    const { file } = req
+    if (!name) throw new Error('Restaurant name is required!')
+    imgurFileHandler(file)
+      .then(filePath => Restaurant.create({
+        name,
+        categoryId,
+        tel,
+        address,
+        openingHours,
+        description,
+        image: filePath || null
+      }))
+      .then(createdRestaurant => cb(null, createdRestaurant))
       .catch(err => cb(err))
   },
   deleteRestaurant: (req, cb) => {
