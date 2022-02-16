@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     openingHours: DataTypes.STRING,
     description: DataTypes.TEXT,
     image: DataTypes.STRING,
-    viewCounts: {
+    viewCount: {
       allowNull: false,
       defaultValue: 0,
       type: DataTypes.INTEGER.UNSIGNED
